@@ -29,6 +29,8 @@ public class ReadForum extends javax.swing.JFrame {
      */
     public ReadForum(String user) {
         initComponents();
+        Forum_TextArea.setLineWrap(true);
+        Forum_TextArea.setWrapStyleWord(true);
         Forum_TextArea.setEditable(false);
         this.user = user;
         try {
