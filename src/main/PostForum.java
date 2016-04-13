@@ -31,6 +31,8 @@ public class PostForum extends javax.swing.JFrame {
     public PostForum(String user) {
         initComponents();
         this.user = user;
+        PostTextArea.setLineWrap(true);
+        PostTextArea.setWrapStyleWord(true);
     }
 
     /**
