@@ -90,31 +90,31 @@ for(int m=1;m<=count;m++)
 for(int p = 0;p<count;p++)
     System.out.println(arr[p]);*/
 
-int i=0;
-int j=0;
-// print result
-for( int[] row: table ){
-    for( int si: row ){
-       ar[i][j]=si;
-       j++;
-    }
-    j=0;
-    i++;
-  
-}
-
-i=0;
-j=0;
-// print result
-for( int[] row: tabley ){
-    for( int si: row ){
-       ary[i][j]=si;
-       j++;
-    }
-    j=0;
-    i++;
-  
-}
+//int i=0;
+//int j=0;
+//// print result
+//for( int[] row: table ){
+//    for( int si: row ){
+//       ar[i][j]=si;
+//       j++;
+//    }
+//    j=0;
+//    i++;
+//  
+//}
+//
+//i=0;
+//j=0;
+//// print result
+//for( int[] row: tabley ){
+//    for( int si: row ){
+//       ary[i][j]=si;
+//       j++;
+//    }
+//    j=0;
+//    i++;
+//  
+//}
 
 
 /*for(int k=0;k<count;k++)
@@ -143,13 +143,13 @@ for(int k=0;k<count;k++)
     Matrix m2 = new Matrix(ary);
     MultiLinear ml  = new MultiLinear(m,m2);
     Matrix result = ml.calculate(); 
-for(int i1=0;i1<result.getNrows();i1++){
-    for(int j1 = 0;j1<result.getNcols();j1++)
-    {
-        System.out.print(result.getValueAt(i1, j1));
-    }
+    for(int i1=0;i1<result.getNrows();i1++){
+        for(int j1 = 0;j1<result.getNcols();j1++)
+        {
+            System.out.print(result.getValueAt(i1, j1));
+        }
     System.out.println();
-}
+    }
 //MultiLinear(ar,ary);
 }
 

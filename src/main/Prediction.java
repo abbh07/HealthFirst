@@ -5,6 +5,16 @@
  */
 package main;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author aakash
@@ -17,15 +27,17 @@ public class Prediction extends javax.swing.JFrame {
     public Prediction() {
         initComponents();
     }
-    
-    private void SelectedItem()
-    {
+
+    Connection con = null;
+    Statement st = null;
+    ResultSet rs = null;
+
+    private void SelectedItem() {
         int[] selectedItem = Symptom_List.getSelectedIndices();
-        for(int i=0;i<selectedItem.length;i++)
-        {
-            Object selected =  Symptom_List.getModel().getElementAt(i);
+        for (int i = 0; i < selectedItem.length; i++) {
+            Object selected = Symptom_List.getModel().getElementAt(i);
         }
-        
+
     }
 
     /**
@@ -41,6 +53,7 @@ public class Prediction extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Symptom_List = new javax.swing.JList();
         Back_Label = new javax.swing.JLabel();
+        Predict_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +73,13 @@ public class Prediction extends javax.swing.JFrame {
             }
         });
 
+        Predict_Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/predict.png"))); // NOI18N
+        Predict_Label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Predict_LabelMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,9 +90,11 @@ public class Prediction extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(211, 211, 211))
             .addGroup(layout.createSequentialGroup()
-                .addGap(283, 283, 283)
+                .addGap(116, 116, 116)
                 .addComponent(Back_Label)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Predict_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,9 +102,11 @@ public class Prediction extends javax.swing.JFrame {
                 .addComponent(Img_Label)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(Back_Label)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Predict_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Back_Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,6 +117,67 @@ public class Prediction extends javax.swing.JFrame {
         i.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Back_LabelMousePressed
+
+    private void Predict_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Predict_LabelMousePressed
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst", "root", "abbh07@6718");
+            st = con.createStatement();
+            String qu = "Select * from Disease_Symptom;";
+            rs = st.executeQuery(qu);
+            Statement stmt1 = con.createStatement();
+            ResultSet rs1 = stmt1.executeQuery("SELECT COUNT(*) AS total FROM Disease_Symptom;");
+            int count = 0;
+            while (rs1.next()) {
+                count = rs1.getInt("total");
+            }
+            Statement stmt2 = con.createStatement();
+            ResultSet rs2 = stmt2.executeQuery("SELECT Disease FROM Disease_Symptom;");
+            String a = "";
+            int nCol = rs.getMetaData().getColumnCount();
+            double ar[][] = new double[count][nCol];
+            //System.out.println(rowNumb);
+            List<int[]> table = new ArrayList<>();
+            while (rs.next()) {
+                int[] row = new int[nCol];
+                for (int iCol = 1; iCol <= nCol; iCol++) {
+                    a = rs.getObject(iCol).toString();
+                    row[iCol - 1] = Integer.parseInt(a);
+                }
+                table.add(row);
+            }
+            
+//            for(int i=0;i<count;i++)
+//            {
+//                for(int j=0;j<nCol;j++)
+//                {
+//                    System.out.print(ar[i][j]+" ");
+//                }
+//                System.out.println();
+//            }
+            int nColy = rs2.getMetaData().getColumnCount();
+            double ary[][] = new double[count][nColy];
+
+            List<int[]> tabley = new ArrayList<>();
+            while (rs2.next()) {
+                int[] rowy = new int[nColy];
+                for (int iCol = 1; iCol <= nColy; iCol++) {
+                    a = rs2.getObject(iCol).toString();
+                    rowy[iCol - 1] = Integer.parseInt(a);
+                }
+                tabley.add(rowy);
+            }
+//            for(int i=0;i<count;i++)
+//            {
+//                for(int j=0;j<nColy;j++)
+//                {
+//                    System.out.print(ary[i][j]+" ");
+//                }
+//                System.out.println();
+//            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Prediction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Predict_LabelMousePressed
 
     /**
      * @param args the command line arguments
@@ -132,6 +217,7 @@ public class Prediction extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Back_Label;
     private javax.swing.JLabel Img_Label;
+    private javax.swing.JLabel Predict_Label;
     private javax.swing.JList Symptom_List;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
