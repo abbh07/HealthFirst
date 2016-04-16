@@ -23,18 +23,41 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Img_Label" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-              <Component id="Back_Label" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="Predict_Label" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+          <Component id="Img_Label" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="Back_Label" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="MusclePain_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="Dehydration_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="Coughing_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="Vomiting_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="WaterMotion_Checkbox" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Predict_Label" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Rashes_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="Appetite_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="ChestPain_Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Constipation_Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,14 +65,34 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="Img_Label" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="WaterMotion_Checkbox" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="Predict_Label" max="32767" attributes="0"/>
-                  <Component id="Back_Label" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Vomiting_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Appetite_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Coughing_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Rashes_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Dehydration_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ChestPain_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="MusclePain_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Constipation_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Back_Label" min="-2" max="-2" attributes="0"/>
+                  <Component id="Predict_Label" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,78 +105,6 @@
         </Property>
       </Properties>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JList" name="Symptom_List">
-          <Properties>
-            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="55">
-                <StringItem index="0" value="Watery motion&#x9;"/>
-                <StringItem index="1" value="Vomiting"/>
-                <StringItem index="2" value="Fever"/>
-                <StringItem index="3" value="Dehydration"/>
-                <StringItem index="4" value="Nausea&#x9;"/>
-                <StringItem index="5" value="Shivering&#x9;"/>
-                <StringItem index="6" value="Muscle pain"/>
-                <StringItem index="7" value="Sweating&#x9;"/>
-                <StringItem index="8" value="Coughing&#x9;"/>
-                <StringItem index="9" value="Headache&#x9;"/>
-                <StringItem index="10" value="Appetite loss&#x9;"/>
-                <StringItem index="11" value="Constipation&#x9;"/>
-                <StringItem index="12" value="Skin rashes&#x9;"/>
-                <StringItem index="13" value="Breath shortness&#x9;"/>
-                <StringItem index="14" value="Chest pain&#x9;"/>
-                <StringItem index="15" value="Fatigue&#x9;"/>
-                <StringItem index="16" value="Joint pain&#x9;"/>
-                <StringItem index="17" value="Cramps&#x9;"/>
-                <StringItem index="18" value="Dry eyes&#x9;"/>
-                <StringItem index="19" value="Vision loss&#x9;"/>
-                <StringItem index="20" value="Scalp sensitivity&#x9;"/>
-                <StringItem index="21" value="Jaw pain&#x9;"/>
-                <StringItem index="22" value="Swollen/ Bleeding gums&#x9;"/>
-                <StringItem index="23" value="Bulging eyes&#x9;"/>
-                <StringItem index="24" value="Bleeding into skin&#x9;"/>
-                <StringItem index="25" value="Dry/ breaking hair"/>
-                <StringItem index="26" value="Irritability&#x9;"/>
-                <StringItem index="27" value="Poor muscle co-ordination&#x9;"/>
-                <StringItem index="28" value="Seizure&#x9;"/>
-                <StringItem index="29" value="Blindness&#x9;"/>
-                <StringItem index="30" value="Deafness&#x9;"/>
-                <StringItem index="31" value="Atexia (walking difficulty)&#x9;"/>
-                <StringItem index="32" value="Flatulence&#x9;"/>
-                <StringItem index="33" value="Weight loss&#x9;"/>
-                <StringItem index="34" value="Coughing blood"/>
-                <StringItem index="35" value="Skin yellowing&#x9;"/>
-                <StringItem index="36" value="Itchiness&#x9;"/>
-                <StringItem index="37" value="Pale stool&#x9;"/>
-                <StringItem index="38" value="Urgency to pass stool"/>
-                <StringItem index="39" value="Dark urine"/>
-                <StringItem index="40" value="Runny nose&#x9;"/>
-                <StringItem index="41" value="Sore throat&#x9;"/>
-                <StringItem index="42" value="Fluid filled blisters"/>
-                <StringItem index="43" value="Unusual discharge"/>
-                <StringItem index="44" value="Lump thickening&#x9;"/>
-                <StringItem index="45" value="Indigestion&#x9;"/>
-                <StringItem index="46" value="Bone pain"/>
-                <StringItem index="47" value="Change in bowel movement"/>
-                <StringItem index="48" value="Blood in bowel"/>
-                <StringItem index="49" value="Mucus in bowel"/>
-                <StringItem index="50" value="Pain while defecating&#x9;"/>
-                <StringItem index="51" value="Backpain&#x9;"/>
-                <StringItem index="52" value="Abdominal pain"/>
-                <StringItem index="53" value="Lymph nodes enlarge"/>
-                <StringItem index="54" value=" "/>
-              </StringArray>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="Back_Label">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -152,6 +123,78 @@
       </Properties>
       <Events>
         <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Predict_LabelMousePressed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="WaterMotion_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Watery Motion "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WaterMotion_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Vomiting_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Vomiting/ Coughing Blood"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Vomiting_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Coughing_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Feverish and Coughing "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Coughing_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Dehydration_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dehydration "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Dehydration_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="MusclePain_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Muscle Pain "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MusclePain_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Appetite_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Appetite Loss "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Appetite_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Rashes_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Skin Rashes "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Rashes_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="ChestPain_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Chest pain/Breath shortness "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChestPain_CheckboxActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="Constipation_Checkbox">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Urination abnormalities/Constipation "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Constipation_CheckboxActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
