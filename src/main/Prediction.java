@@ -37,6 +37,8 @@ public class Prediction extends javax.swing.JFrame {
     boolean symptomsSelected[] = new boolean[9];
     int c = 0;
     String symptomName[] = new String[9];
+    String diseaseName[] = {"Diarrhea","Malaria","Cholera","Typhoid","Dengue","Pleural effusion",
+    "Collagen Vascular Disease","Tuberculosis","Dysentery","Swine Flu","Jaundice"};
     int diseaseWeight[] = new int[9];
     
     /**
@@ -216,14 +218,6 @@ public class Prediction extends javax.swing.JFrame {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst", "root", "abbh07@6718");
             st = con.createStatement();
-//            String qu = "select Watery_motion,Vomiting,Fever,Dehydration,Nausea,Shivering,Muscle_Pain,Sweating,";
-//            qu = qu + "Coughing,Headache,Appetite_Loss,Constipation,Skin_Rashes,Breath_Shortness,Chest_Pain,Fatigue,";
-//            qu = qu + "Joint_Pain,Cramps,Dry_Eyes,Vision_Loss,Scalp_Sensitivity,Jaw_Pain,Bleeding_Gums,Bulging_Eyes,";
-//            qu = qu + "Bleeding_into_skin,Dry_Hair,Irritability,Poor_Muscle_Coordination,Seizure,Blindness,Deafness,";
-//            qu = qu + "Atexia,Flatulence,Weight_Loss,Coughing_Blood,Skin_Yellowing,Itchiness,Pale_Stool,Urgency_to_pass_stool,";
-//            qu = qu + "Dark_Urine,Runny_Nose,Sore_Throat,Fluid_Filled_Blisters,Unusual_Discharge,Lump_Thickening,Indigestion,";
-//            qu = qu + "Bone_Pain,Change_in_bowel_movement,Blood_in_bowel,Mucus_in_bowel,Pain_while_defecating,";
-//            qu = qu + "Backpain from Disease_Symptom";//,Abdominal_Pain,Lymph_Node_Enlargement from Disease_Symptom;";
             String qu = "select watery_motion,vomiting,feverish,dehydration,muscle_pain,appetite_loss,skin_rashes,chest_pain,constipation from prediction;";
             rs = st.executeQuery(qu);
             Statement stmt1 = con.createStatement();
@@ -285,56 +279,39 @@ public class Prediction extends javax.swing.JFrame {
                 i++;
             }
 
-            for (i = 0; i < count; i++) {
-                for (j = 0; j < nCol; j++) {
-                    System.out.print(ar[i][j] + "\t");
-                }
-                System.out.println();
-            }
-            for (i = 0; i < count; i++) {
-                for (j = 0; j < nColy; j++) {
-                    System.out.print(ary[i][j] + "\t");
-                }
-                System.out.println();
-            }
+//            for (i = 0; i < count; i++) {
+//                for (j = 0; j < nCol; j++) {
+//                    System.out.print(ar[i][j] + "\t");
+//                }
+//                System.out.println();
+//            }
+//            for (i = 0; i < count; i++) {
+//                for (j = 0; j < nColy; j++) {
+//                    System.out.print(ary[i][j] + "\t");
+//                }
+//                System.out.println();
+//            }
             
             Matrix m = new Matrix(ar);
             Matrix m2 = new Matrix(ary);
             MultiLinear ml = new MultiLinear(m, m2);
             Matrix result = ml.calculate();
-            for (int i1 = 0; i1 < result.getNrows(); i1++) {
-                for (int j1 = 0; j1 < result.getNcols(); j1++) {
-                    System.out.print(result.getValueAt(i1, j1));
-                }
-                System.out.println();
-            }
-            
-//            for(i=0;i<sym.length;i++)
-//            { 
-//                if(sym[i] == true)
-//                {
-//                    c++;
+//            for (int i1 = 0; i1 < result.getNrows(); i1++) {
+//                for (int j1 = 0; j1 < result.getNcols(); j1++) {
+//                    System.out.print(result.getValueAt(i1, j1));
 //                }
+//                System.out.println();
 //            }
-//            String arrFinal[] = new String[c];
-//            j=0;
-//            for(i=0;i<sym.length;i++)
-//            {
-//                if(sym[i] == true)
-//                {
-//                    arrFinal[j] = arr[i];
-//                    j++;
-//                }
-//            }
-//            for(i=0;i<arrFinal.length;i++)
-//            {
-//                System.out.println(arrFinal[i]);
-//            }
+
             double predictedDisease =  result.getValueAt(0, 0);
             for (j=1; j< result.getNrows(); j++) {
                 predictedDisease += result.getValueAt(j, 0) * diseaseWeight[j-1];
             }
             System.out.println(predictedDisease);
+            int pd = (int)(predictedDisease + 50)/100*100;
+            System.out.println(pd);
+            pd = (pd/100)-1;
+            System.out.println(diseaseName[pd]);
         
 
         } catch (SQLException ex) {
