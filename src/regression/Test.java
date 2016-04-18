@@ -39,13 +39,13 @@ public class Test {
             }
             System.out.println();
         }
-        for (int i=0;i<Y.getNrows();i++) {
-            double predictedY =  beta.getValueAt(0, 0);
-            for (int j=1; j< beta.getNrows(); j++) {
-                predictedY += beta.getValueAt(j, 0) * X.getValueAt(i, j-1);
-            }
-            System.out.println(Y.getValueAt(i, 0) + " -> " + predictedY);
-        }
+//        for (int i=0;i<Y.getNrows();i++) {
+//            double predictedY =  beta.getValueAt(0, 0);
+//            for (int j=1; j< beta.getNrows(); j++) {
+//                predictedY += beta.getValueAt(j, 0) * X.getValueAt(i, j-1);
+//            }
+//            System.out.println(Y.getValueAt(i, 0) + " -> " + predictedY);
+//        }
     }
     
 }

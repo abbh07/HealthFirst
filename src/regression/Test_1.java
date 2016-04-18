@@ -90,31 +90,30 @@ for(int m=1;m<=count;m++)
 for(int p = 0;p<count;p++)
     System.out.println(arr[p]);*/
 
-//int i=0;
-//int j=0;
-//// print result
-//for( int[] row: table ){
-//    for( int si: row ){
-//       ar[i][j]=si;
-//       j++;
-//    }
-//    j=0;
-//    i++;
-//  
-//}
-//
-//i=0;
-//j=0;
-//// print result
-//for( int[] row: tabley ){
-//    for( int si: row ){
-//       ary[i][j]=si;
-//       j++;
-//    }
-//    j=0;
-//    i++;
-//  
-//}
+int i=0;
+int j=0;
+// print result
+for( int[] row: table ){
+    for( int si: row ){
+       ar[i][j]=si;
+       j++;
+    }
+    j=0;
+    i++;
+  
+}
+
+i=0;
+j=0;
+// print result
+for( int[] row: tabley ){
+    for( int si: row ){
+       ary[i][j]=si;
+       j++;
+    }
+    j=0;
+    i++;
+}
 
 
 /*for(int k=0;k<count;k++)

@@ -307,11 +307,14 @@ public class Prediction extends javax.swing.JFrame {
             for (j=1; j< result.getNrows(); j++) {
                 predictedDisease += result.getValueAt(j, 0) * diseaseWeight[j-1];
             }
-            System.out.println(predictedDisease);
+            //System.out.println(predictedDisease);
             int pd = (int)(predictedDisease + 50)/100*100;
-            System.out.println(pd);
+            //System.out.println(pd);
             pd = (pd/100)-1;
-            System.out.println(diseaseName[pd]);
+            //System.out.println(diseaseName[pd]);
+            Result r = new Result(diseaseName[pd]);
+            r.setVisible(true);
+            this.setVisible(false);
         
 
         } catch (SQLException ex) {
