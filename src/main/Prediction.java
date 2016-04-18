@@ -310,9 +310,11 @@ public class Prediction extends javax.swing.JFrame {
             //System.out.println(predictedDisease);
             int pd = (int)(predictedDisease + 50)/100*100;
             //System.out.println(pd);
-            pd = (pd/100)-1;
+            int pdIndex = (pd/100)-1;
             //System.out.println(diseaseName[pd]);
-            Result r = new Result(diseaseName[pd]);
+            qu = "insert into prediction values ('"+diseaseWeight[0]+"','"+diseaseWeight[1]+"','"+diseaseWeight[2]+"','"+diseaseWeight[3]+"','"+diseaseWeight[4]+"','"+diseaseWeight[5]+"','"+diseaseWeight[6]+"','"+diseaseWeight[7]+"','"+diseaseWeight[8]+"','"+pd+"');";
+            st.executeUpdate(qu);
+            Result r = new Result(diseaseName[pdIndex]);
             r.setVisible(true);
             this.setVisible(false);
         

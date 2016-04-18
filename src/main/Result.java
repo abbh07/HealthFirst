@@ -14,6 +14,7 @@ public class Result extends javax.swing.JFrame {
     
     /**
      * Creates new form Result
+     * @param predictedDisease
      */
     public Result(String predictedDisease) {
         initComponents();
@@ -32,14 +33,14 @@ public class Result extends javax.swing.JFrame {
 
         Img_Label = new javax.swing.JLabel();
         Predicted_TextField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        Disease_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Img_Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/healthcare-banner.jpg"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        jLabel1.setText("Predicted Disease:");
+        Disease_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Disease_Label.setText("Predicted Disease:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,7 +50,7 @@ public class Result extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(222, 222, 222)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(Disease_Label)
                     .addComponent(Predicted_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -58,7 +59,7 @@ public class Result extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Img_Label)
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1)
+                .addComponent(Disease_Label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Predicted_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 172, Short.MAX_VALUE))
@@ -103,8 +104,8 @@ public class Result extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Disease_Label;
     private javax.swing.JLabel Img_Label;
     private javax.swing.JTextField Predicted_TextField;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
