@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="Img_Label" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="285" max="-2" attributes="0"/>
+              <Component id="Back_Label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="Img_Label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="250" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Back_Label" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="Img_Label">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/main/healthcare-banner.jpg"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="Contact_TextArea">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Women&apos;s Helpline (All Over in India): 181&#xa;&#xa;Medical Helpline (Andhra Pradesh, Gujarat, Uttarakhand, Goa, Tamil Nadu, Rajasthan, Karnataka, Assam, Meghalaya, Madhya Pradesh and Uttar Pradesh): 108&#xa;&#xa;Ambulance helpline (All over India): 102&#xa;&#xa;AIDS Helpline (All over India): 1097&#xa;&#xa;Fire service (All over India): 101&#xa;&#xa;Centralised Accident &amp; Trauma  Services (CATS) (New Delhi): 1099&#xa;&#xa;Senior Citizen Helpline (New Delhi): 1291&#xa;&#xa;Anti Poison(New Delhi): 1066&#xa;&#xa;Eye Donation (New Delhi): 1919&#xa;&#xa;Ambulance Service (New Delhi): 1066&#xa;&#xa;Helpline for Women (New Delhi): 1092&#xa;&#xa;Kasturba Medical College&#xa;SH 65, Madhav Nagar, Manipal, Karnataka 576104&#xa;Phone:0820 292 2367&#xa;&#xa;All India Institute of Medical Sciences&#xa;Address: Ansari Nagar East, New Delhi, Delhi 110029&#xa;Phone:011 2658 8500&#xa;&#xa;Fortis Healthcare&#xa;Tower A, Unitech Business Park,&#xa;Block - F, South City 1, Sector - 41,&#xa;Gurgaon, Haryana - 122001&#xa;Contact Numbers - +91 124 4921021, +91- 124 4921071, +91 124 4921033&#xa;Fax number - +91 124 492 1041&#xa;Email id - enquiries@fortishealthcare.com&#xa;&#xa;Apollo Hospital&#xa;BANGALORE 154/11,&#xa;Opp IIM, Bannerghatta Road&#xa;Bangalore - 560076 (India)&#xa;Tel.: +(91)-80-26304050 / 26304051&#xa;Fax: +(91)-80-41463151&#xa;E-mail: customercare_bangalore@apollohospitals.com"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="Back_Label">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/main/back.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Back_LabelMousePressed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

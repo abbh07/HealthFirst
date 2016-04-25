@@ -66,6 +66,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        Username_TextField.setText(null);
+        Password_PasswordField.setText(null);
     }
     
         Connection con = null;
@@ -222,7 +224,19 @@ public class Login extends javax.swing.JFrame {
     private void Login_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Login_LabelMousePressed
         usr =  Username_TextField.getText();
         pass = Password_PasswordField.getText();
-        boolean flag = false;
+        int flag = 0;
+        if(usr == null)
+        {
+            flag = 1;
+        }
+        else if(pass == null)
+        {
+            flag = 2;
+        }
+        else if(usr == null && pass == null)
+        {
+            flag = 3;
+        }
             try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst","root","abbh07@6718");
             Statement stmt = con.createStatement();
@@ -235,15 +249,27 @@ public class Login extends javax.swing.JFrame {
                if(dp.equals(pass))
                {
                    //View main menu
-                   flag = true;
+                   flag = 1;
                    Index i = new Index(usr);
                    i.setVisible(true);
                    this.setVisible(false);
                }
             }
-            if(flag == false)
+            if(flag == 0)
             {
                 JOptionPane.showMessageDialog(null, "Invalid Username/Password");
+            }
+            else if(flag == 1)
+            {
+                JOptionPane.showMessageDialog(null,"Enter your Username!");
+            }
+            else if(flag == 2)
+            {
+                JOptionPane.showMessageDialog(null, "Enter your Password!");
+            }
+            else if(flag == 3)
+            {
+                JOptionPane.showMessageDialog(null, "Enter your Username and Password!");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

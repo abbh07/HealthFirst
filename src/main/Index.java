@@ -34,6 +34,7 @@ public class Index extends javax.swing.JFrame {
         Forum_Label = new javax.swing.JLabel();
         FirstAid_Label = new javax.swing.JLabel();
         LogOut_Label = new javax.swing.JLabel();
+        Helpline_Label = new javax.swing.JLabel();
         Img_Label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,7 +60,7 @@ public class Index extends javax.swing.JFrame {
                 Forum_LabelMousePressed(evt);
             }
         });
-        getContentPane().add(Forum_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 110, 50));
+        getContentPane().add(Forum_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 110, 50));
 
         FirstAid_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         FirstAid_Label.setForeground(new java.awt.Color(0, 62, 255));
@@ -82,6 +83,16 @@ public class Index extends javax.swing.JFrame {
             }
         });
         getContentPane().add(LogOut_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 80, 40));
+
+        Helpline_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Helpline_Label.setForeground(new java.awt.Color(0, 62, 255));
+        Helpline_Label.setText("  HELPLINE");
+        Helpline_Label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                Helpline_LabelMousePressed(evt);
+            }
+        });
+        getContentPane().add(Helpline_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 90, 50));
 
         Img_Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/healthcare-1.jpg"))); // NOI18N
         getContentPane().add(Img_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -112,6 +123,12 @@ public class Index extends javax.swing.JFrame {
         mp.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_LogOut_LabelMousePressed
+
+    private void Helpline_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Helpline_LabelMousePressed
+        Emergency e = new Emergency();
+        e.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_Helpline_LabelMousePressed
 
     /**
      * @param args the command line arguments
@@ -151,6 +168,7 @@ public class Index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel FirstAid_Label;
     private javax.swing.JLabel Forum_Label;
+    private javax.swing.JLabel Helpline_Label;
     private javax.swing.JLabel Img_Label;
     private javax.swing.JLabel LogOut_Label;
     private javax.swing.JLabel Predict_Label;
