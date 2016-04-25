@@ -102,7 +102,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_Forum_LabelMousePressed
 
     private void FirstAid_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FirstAid_LabelMousePressed
-        FirstAid fa = new FirstAid();
+        FirstAid1 fa = new FirstAid1(user);
         fa.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_FirstAid_LabelMousePressed
