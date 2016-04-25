@@ -32,13 +32,11 @@
                       <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="Password_passwordfield" alignment="1" min="-2" pref="219" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Username_Label" min="-2" max="-2" attributes="0"/>
-                              <Component id="Username_TextField" min="-2" pref="220" max="-2" attributes="0"/>
-                              <Component id="Password_Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Username_Label" min="-2" max="-2" attributes="0"/>
+                          <Component id="Username_TextField" min="-2" pref="220" max="-2" attributes="0"/>
+                          <Component id="Password_Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="Password_passwordfield" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                   </Group>
@@ -76,6 +74,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="15" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d9" green="56" red="5" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Enter Username:"/>
       </Properties>
     </Component>
@@ -83,6 +84,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d9" green="56" red="5" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Enter Password:"/>
       </Properties>

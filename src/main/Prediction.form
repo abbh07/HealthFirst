@@ -32,12 +32,12 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="MusclePain_Checkbox" min="-2" max="-2" attributes="0"/>
                           <Component id="Dehydration_Checkbox" min="-2" max="-2" attributes="0"/>
                           <Component id="Coughing_Checkbox" min="-2" max="-2" attributes="0"/>
-                          <Component id="Vomiting_Checkbox" min="-2" max="-2" attributes="0"/>
-                          <Component id="WaterMotion_Checkbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="Vomiting_Checkbox" max="32767" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -54,6 +54,7 @@
                           <Component id="Appetite_Checkbox" min="-2" max="-2" attributes="0"/>
                           <Component id="ChestPain_Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="Constipation_Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="WaterMotion_Checkbox" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -66,7 +67,10 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="Img_Label" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="WaterMotion_Checkbox" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="WaterMotion_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Vomiting_Checkbox" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -196,6 +200,17 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Constipation_CheckboxActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Ubuntu" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d9" green="56" red="5" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="SELECT SYMPTOMS:"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

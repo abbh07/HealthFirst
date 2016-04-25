@@ -114,7 +114,13 @@ public class PostForum extends javax.swing.JFrame {
 
     private void Post_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Post_LabelMousePressed
         String disc = PostTextArea.getText();
-        try {
+        if(PostTextArea.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Enter something to post!");
+        }
+        else
+        {
+            try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst","root", "abbh07@6718");
             st = con.createStatement();
             String q = "insert into forum values ('"+user+"','"+disc+"');";
@@ -124,6 +130,7 @@ public class PostForum extends javax.swing.JFrame {
         }
         JOptionPane.showMessageDialog(null, "Post Successful!");
         PostTextArea.setText(null);
+        }        
     }//GEN-LAST:event_Post_LabelMousePressed
 
     private void Back_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Back_LabelMousePressed

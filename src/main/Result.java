@@ -57,9 +57,11 @@ public class Result extends javax.swing.JFrame {
         Img_Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/healthcare-banner.jpg"))); // NOI18N
 
         Disease_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Disease_Label.setForeground(new java.awt.Color(5, 86, 217));
         Disease_Label.setText("Predicted Disease:");
 
         Remedy_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Remedy_Label.setForeground(new java.awt.Color(5, 86, 217));
         Remedy_Label.setText("Remedies:");
 
         Remedy_TextArea.setColumns(20);
@@ -67,6 +69,7 @@ public class Result extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Remedy_TextArea);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(5, 86, 217));
         jLabel1.setText("Specialized Doctor:");
 
         Doctor_TextArea.setColumns(20);

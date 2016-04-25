@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import matrix.Matrix;
 import matrix.NoSquareException;
 import regression.MultiLinear;
@@ -37,10 +38,11 @@ public class Prediction extends javax.swing.JFrame {
     boolean symptomsSelected[] = new boolean[9];
     int c = 0;
     String symptomName[] = new String[9];
-    String diseaseName[] = {"Diarrhea","Malaria","Cholera","Typhoid","Dengue","Pleural effusion",
-    "Collagen Vascular Disease","Tuberculosis","Dysentery","Swine Flu","Jaundice"};
+    String diseaseName[] = {"Diarrhea", "Malaria", "Cholera", "Typhoid", "Dengue", "Pleural effusion",
+        "Collagen Vascular Disease", "Tuberculosis", "Dysentery", "Swine Flu", "Jaundice"};
     int diseaseWeight[] = new int[9];
-    
+    boolean flag = false;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,6 +64,7 @@ public class Prediction extends javax.swing.JFrame {
         Rashes_Checkbox = new javax.swing.JCheckBox();
         ChestPain_Checkbox = new javax.swing.JCheckBox();
         Constipation_Checkbox = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +147,10 @@ public class Prediction extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(5, 86, 217));
+        jLabel1.setText("SELECT SYMPTOMS:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,12 +163,12 @@ public class Prediction extends javax.swing.JFrame {
                         .addComponent(Back_Label))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(MusclePain_Checkbox)
                             .addComponent(Dehydration_Checkbox)
                             .addComponent(Coughing_Checkbox)
-                            .addComponent(Vomiting_Checkbox)
-                            .addComponent(WaterMotion_Checkbox))))
+                            .addComponent(Vomiting_Checkbox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -173,7 +180,8 @@ public class Prediction extends javax.swing.JFrame {
                             .addComponent(Rashes_Checkbox)
                             .addComponent(Appetite_Checkbox)
                             .addComponent(ChestPain_Checkbox)
-                            .addComponent(Constipation_Checkbox))
+                            .addComponent(Constipation_Checkbox)
+                            .addComponent(WaterMotion_Checkbox))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -181,7 +189,9 @@ public class Prediction extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Img_Label)
                 .addGap(33, 33, 33)
-                .addComponent(WaterMotion_Checkbox)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(WaterMotion_Checkbox)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Vomiting_Checkbox)
@@ -215,69 +225,76 @@ public class Prediction extends javax.swing.JFrame {
     }//GEN-LAST:event_Back_LabelMousePressed
 
     private void Predict_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Predict_LabelMousePressed
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst", "root", "abbh07@6718");
-            st = con.createStatement();
-            String qu = "select watery_motion,vomiting,feverish,dehydration,muscle_pain,appetite_loss,skin_rashes,chest_pain,constipation from prediction;";
-            rs = st.executeQuery(qu);
-            Statement stmt1 = con.createStatement();
-            ResultSet rs1 = stmt1.executeQuery("SELECT COUNT(*) AS total FROM prediction;");
-            int count = 0;
-            while (rs1.next()) {
-                count = rs1.getInt("total");
+        for (int i = 0; i < symptomsSelected.length; i++) {
+            if (symptomsSelected[i] == true) {
+                flag = true;
+                break;
             }
-            Statement stmt2 = con.createStatement();
-            ResultSet rs2 = stmt2.executeQuery("SELECT disease FROM prediction;");
-            String a = "";
-            int nCol = rs.getMetaData().getColumnCount();
-            double ar[][] = new double[count][nCol];
-            //System.out.println(rowNumb);
-            List<int[]> table = new ArrayList<>();
-            while (rs.next()) {
-                int[] row = new int[nCol];
-                for (int iCol = 1; iCol <= nCol; iCol++) {
-                    a = rs.getObject(iCol).toString();
-                    row[iCol - 1] = Integer.parseInt(a);
+        }
+        if (flag == true) {
+            try {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst", "root", "abbh07@6718");
+                st = con.createStatement();
+                String qu = "select watery_motion,vomiting,feverish,dehydration,muscle_pain,appetite_loss,skin_rashes,chest_pain,constipation from prediction;";
+                rs = st.executeQuery(qu);
+                Statement stmt1 = con.createStatement();
+                ResultSet rs1 = stmt1.executeQuery("SELECT COUNT(*) AS total FROM prediction;");
+                int count = 0;
+                while (rs1.next()) {
+                    count = rs1.getInt("total");
                 }
-                table.add(row);
-            }
+                Statement stmt2 = con.createStatement();
+                ResultSet rs2 = stmt2.executeQuery("SELECT disease FROM prediction;");
+                String a = "";
+                int nCol = rs.getMetaData().getColumnCount();
+                double ar[][] = new double[count][nCol];
+                //System.out.println(rowNumb);
+                List<int[]> table = new ArrayList<>();
+                while (rs.next()) {
+                    int[] row = new int[nCol];
+                    for (int iCol = 1; iCol <= nCol; iCol++) {
+                        a = rs.getObject(iCol).toString();
+                        row[iCol - 1] = Integer.parseInt(a);
+                    }
+                    table.add(row);
+                }
 
-            int nColy = rs2.getMetaData().getColumnCount();
-            double ary[][] = new double[count][nColy];
+                int nColy = rs2.getMetaData().getColumnCount();
+                double ary[][] = new double[count][nColy];
 
-            List<int[]> tabley = new ArrayList<>();
-            while (rs2.next()) {
-                int[] rowy = new int[nColy];
-                for (int iCol = 1; iCol <= nColy; iCol++) {
-                    a = rs2.getObject(iCol).toString();
-                    rowy[iCol - 1] = Integer.parseInt(a);
+                List<int[]> tabley = new ArrayList<>();
+                while (rs2.next()) {
+                    int[] rowy = new int[nColy];
+                    for (int iCol = 1; iCol <= nColy; iCol++) {
+                        a = rs2.getObject(iCol).toString();
+                        rowy[iCol - 1] = Integer.parseInt(a);
+                    }
+                    tabley.add(rowy);
                 }
-                tabley.add(rowy);
-            }
-            int i = 0;
-            int j = 0;
-            // print result
-            for (int[] row : table) {
-                for (int si : row) {
-                    ar[i][j] = si;
-                    j++;
+                int i = 0;
+                int j = 0;
+                // print result
+                for (int[] row : table) {
+                    for (int si : row) {
+                        ar[i][j] = si;
+                        j++;
+                    }
+                    j = 0;
+                    i++;
+
                 }
+
+                i = 0;
                 j = 0;
-                i++;
-
-            }
-
-            i = 0;
-            j = 0;
-            // print result
-            for (int[] row : tabley) {
-                for (int si : row) {
-                    ary[i][j] = si;
-                    j++;
+                // print result
+                for (int[] row : tabley) {
+                    for (int si : row) {
+                        ary[i][j] = si;
+                        j++;
+                    }
+                    j = 0;
+                    i++;
                 }
-                j = 0;
-                i++;
-            }
 
 //            for (i = 0; i < count; i++) {
 //                for (j = 0; j < nCol; j++) {
@@ -291,11 +308,10 @@ public class Prediction extends javax.swing.JFrame {
 //                }
 //                System.out.println();
 //            }
-            
-            Matrix m = new Matrix(ar);
-            Matrix m2 = new Matrix(ary);
-            MultiLinear ml = new MultiLinear(m, m2);
-            Matrix result = ml.calculate();
+                Matrix m = new Matrix(ar);
+                Matrix m2 = new Matrix(ary);
+                MultiLinear ml = new MultiLinear(m, m2);
+                Matrix result = ml.calculate();
 //            for (int i1 = 0; i1 < result.getNrows(); i1++) {
 //                for (int j1 = 0; j1 < result.getNcols(); j1++) {
 //                    System.out.print(result.getValueAt(i1, j1));
@@ -303,55 +319,57 @@ public class Prediction extends javax.swing.JFrame {
 //                System.out.println();
 //            }
 
-            double predictedDisease =  result.getValueAt(0, 0);
-            for (j=1; j< result.getNrows(); j++) {
-                predictedDisease += result.getValueAt(j, 0) * diseaseWeight[j-1];
-            }
-            //System.out.println(predictedDisease);
-            int pd = (int)(predictedDisease + 50)/100*100;
-            //System.out.println(pd);
-            int pdIndex = (pd/100)-1;
-            //System.out.println(diseaseName[pd]);
-            qu = "insert into prediction values ('"+diseaseWeight[0]+"','"+diseaseWeight[1]+"','"+diseaseWeight[2]+"','"+diseaseWeight[3]+"','"+diseaseWeight[4]+"','"+diseaseWeight[5]+"','"+diseaseWeight[6]+"','"+diseaseWeight[7]+"','"+diseaseWeight[8]+"','"+pd+"');";
-            st.executeUpdate(qu);
-            qu = "select Cure from Remedies where Disease = '" + diseaseName[pdIndex] + "';";
-            rs = st.executeQuery(qu);
-            String rem = "";
-            while (rs.next()) {
-                rem += rs.getString("Cure");
-                rem += "\n";
-            }
-            qu = "select Name,Contact from Doctor where Disease = '" + diseaseName[pdIndex] + "';";
-            rs = st.executeQuery(qu);
-            String info = "";
-            while(rs.next())
-            {
-                info = info + rs.getString("Name");
-                info = info + "\n";
-                info = info + rs.getString("Contact");
-                info = info + "\n";
-            }
-            Result r = new Result(diseaseName[pdIndex],rem,info);
-            r.setVisible(true);
-            this.setVisible(false);
-        
+                double predictedDisease = result.getValueAt(0, 0);
+                for (j = 1; j < result.getNrows(); j++) {
+                    predictedDisease += result.getValueAt(j, 0) * diseaseWeight[j - 1];
+                }
+                //System.out.println(predictedDisease);
+                int pd = (int) (predictedDisease + 50) / 100 * 100;
+                //System.out.println(pd);
+                int pdIndex = (pd / 100) - 1;
+                //System.out.println(diseaseName[pd]);
+                qu = "insert into prediction values ('" + diseaseWeight[0] + "','" + diseaseWeight[1] + "','" + diseaseWeight[2] + "','" + diseaseWeight[3] + "','" + diseaseWeight[4] + "','" + diseaseWeight[5] + "','" + diseaseWeight[6] + "','" + diseaseWeight[7] + "','" + diseaseWeight[8] + "','" + pd + "');";
+                st.executeUpdate(qu);
+                qu = "select Cure from Remedies where Disease = '" + diseaseName[pdIndex] + "';";
+                rs = st.executeQuery(qu);
+                String rem = "";
+                while (rs.next()) {
+                    rem += rs.getString("Cure");
+                    rem += "\n";
+                }
+                qu = "select Name,Contact from Doctor where Disease = '" + diseaseName[pdIndex] + "';";
+                rs = st.executeQuery(qu);
+                String info = "";
+                while (rs.next()) {
+                    info = info + rs.getString("Name");
+                    info = info + "\n";
+                    info = info + rs.getString("Contact");
+                    info = info + "\n";
+                }
+                JOptionPane.showMessageDialog(null, "Prediction Successful!");
+                Result r = new Result(diseaseName[pdIndex], rem, info);
+                r.setVisible(true);
+                this.setVisible(false);
 
-        } catch (SQLException ex) {
-            Logger.getLogger(Prediction.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSquareException ex) {
-            Logger.getLogger(Prediction.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Prediction.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSquareException ex) {
+                Logger.getLogger(Prediction.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No Symptoms selected!");
+        }
+
     }//GEN-LAST:event_Predict_LabelMousePressed
 
     private void WaterMotion_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WaterMotion_CheckboxActionPerformed
         symptomsSelected[0] = WaterMotion_Checkbox.isEnabled();
         symptomName[0] = WaterMotion_Checkbox.getText();
-        if(symptomsSelected[0])
-        {
+        if (symptomsSelected[0]) {
             diseaseWeight[0] = 10;
-        }
-        else
-        {
+        } else {
             diseaseWeight[0] = 0;
         }
     }//GEN-LAST:event_WaterMotion_CheckboxActionPerformed
@@ -359,12 +377,9 @@ public class Prediction extends javax.swing.JFrame {
     private void Vomiting_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vomiting_CheckboxActionPerformed
         symptomsSelected[1] = Vomiting_Checkbox.isEnabled();
         symptomName[1] = Vomiting_Checkbox.getText();
-        if(symptomsSelected[1])
-        {
+        if (symptomsSelected[1]) {
             diseaseWeight[1] = 20;
-        }
-        else
-        {
+        } else {
             diseaseWeight[1] = 0;
         }
     }//GEN-LAST:event_Vomiting_CheckboxActionPerformed
@@ -372,12 +387,9 @@ public class Prediction extends javax.swing.JFrame {
     private void Coughing_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Coughing_CheckboxActionPerformed
         symptomsSelected[2] = Coughing_Checkbox.isEnabled();
         symptomName[2] = Coughing_Checkbox.getText();
-        if(symptomsSelected[2])
-        {
+        if (symptomsSelected[2]) {
             diseaseWeight[2] = 30;
-        }
-        else
-        {
+        } else {
             diseaseWeight[2] = 0;
         }
     }//GEN-LAST:event_Coughing_CheckboxActionPerformed
@@ -385,12 +397,9 @@ public class Prediction extends javax.swing.JFrame {
     private void Dehydration_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Dehydration_CheckboxActionPerformed
         symptomsSelected[3] = Dehydration_Checkbox.isEnabled();
         symptomName[3] = Dehydration_Checkbox.getText();
-        if(symptomsSelected[3])
-        {
+        if (symptomsSelected[3]) {
             diseaseWeight[3] = 40;
-        }
-        else
-        {
+        } else {
             diseaseWeight[3] = 0;
         }
     }//GEN-LAST:event_Dehydration_CheckboxActionPerformed
@@ -398,12 +407,9 @@ public class Prediction extends javax.swing.JFrame {
     private void MusclePain_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MusclePain_CheckboxActionPerformed
         symptomsSelected[4] = MusclePain_Checkbox.isEnabled();
         symptomName[4] = MusclePain_Checkbox.getText();
-        if(symptomsSelected[4])
-        {
+        if (symptomsSelected[4]) {
             diseaseWeight[4] = 50;
-        }
-        else
-        {
+        } else {
             diseaseWeight[4] = 0;
         }
     }//GEN-LAST:event_MusclePain_CheckboxActionPerformed
@@ -411,12 +417,9 @@ public class Prediction extends javax.swing.JFrame {
     private void Appetite_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Appetite_CheckboxActionPerformed
         symptomsSelected[5] = Appetite_Checkbox.isEnabled();
         symptomName[5] = Appetite_Checkbox.getText();
-        if(symptomsSelected[5])
-        {
+        if (symptomsSelected[5]) {
             diseaseWeight[5] = 60;
-        }
-        else
-        {
+        } else {
             diseaseWeight[5] = 0;
         }
     }//GEN-LAST:event_Appetite_CheckboxActionPerformed
@@ -424,12 +427,9 @@ public class Prediction extends javax.swing.JFrame {
     private void Rashes_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rashes_CheckboxActionPerformed
         symptomsSelected[6] = Rashes_Checkbox.isEnabled();
         symptomName[6] = Rashes_Checkbox.getText();
-        if(symptomsSelected[6])
-        {
+        if (symptomsSelected[6]) {
             diseaseWeight[6] = 70;
-        }
-        else
-        {
+        } else {
             diseaseWeight[6] = 0;
         }
     }//GEN-LAST:event_Rashes_CheckboxActionPerformed
@@ -437,12 +437,9 @@ public class Prediction extends javax.swing.JFrame {
     private void ChestPain_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChestPain_CheckboxActionPerformed
         symptomsSelected[7] = ChestPain_Checkbox.isEnabled();
         symptomName[7] = ChestPain_Checkbox.getText();
-        if(symptomsSelected[7])
-        {
+        if (symptomsSelected[7]) {
             diseaseWeight[7] = 80;
-        }
-        else
-        {
+        } else {
             diseaseWeight[7] = 0;
         }
     }//GEN-LAST:event_ChestPain_CheckboxActionPerformed
@@ -450,12 +447,9 @@ public class Prediction extends javax.swing.JFrame {
     private void Constipation_CheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Constipation_CheckboxActionPerformed
         symptomsSelected[8] = Constipation_Checkbox.isEnabled();
         symptomName[8] = Constipation_Checkbox.getText();
-        if(symptomsSelected[8])
-        {
+        if (symptomsSelected[8]) {
             diseaseWeight[8] = 90;
-        }
-        else
-        {
+        } else {
             diseaseWeight[8] = 0;
         }
     }//GEN-LAST:event_Constipation_CheckboxActionPerformed
@@ -508,5 +502,6 @@ public class Prediction extends javax.swing.JFrame {
     private javax.swing.JCheckBox Rashes_Checkbox;
     private javax.swing.JCheckBox Vomiting_Checkbox;
     private javax.swing.JCheckBox WaterMotion_Checkbox;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

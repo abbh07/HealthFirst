@@ -52,9 +52,11 @@ public class SignUp extends javax.swing.JFrame {
         });
 
         Username_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Username_Label.setForeground(new java.awt.Color(5, 86, 217));
         Username_Label.setText("Enter Username:");
 
         Password_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Password_Label.setForeground(new java.awt.Color(5, 86, 217));
         Password_Label.setText("Enter Password:");
 
         Img_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/healthcare-1024x410.png"))); // NOI18N
@@ -85,12 +87,11 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(Register_Label)
                         .addGap(287, 287, 287))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Password_passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Username_Label)
-                                .addComponent(Username_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Password_Label)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Username_Label)
+                            .addComponent(Username_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Password_Label)
+                            .addComponent(Password_passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(215, 215, 215))))
         );
         layout.setVerticalGroup(
@@ -127,23 +128,32 @@ public class SignUp extends javax.swing.JFrame {
     private void Register_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Register_LabelMousePressed
         usr = Username_TextField.getText();
         pass = Password_passwordfield.getText();
-        try {
-            gp = AESCrypt.encrypt(pass);
-        } catch (Exception ex) {
-            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+        if (Username_TextField.getText().isEmpty() && Password_passwordfield.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter a username and password!");
+        } else if (Username_TextField.getText().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Enter a Username!");
+        } else if (Password_passwordfield.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter a password!");
+        } else {
+            try {
+                gp = AESCrypt.encrypt(pass);
+            } catch (Exception ex) {
+                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst", "root", "abbh07@6718");
+                Statement stmt = con.createStatement();
+                String sql = "insert into login values('" + usr + "','" + gp + "');";
+                stmt.executeUpdate(sql);
+            } catch (SQLException ex) {
+                Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Registration Successful!");
+            Index i = new Index(usr);
+            i.setVisible(true);
+            this.setVisible(false);
         }
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst","root", "abbh07@6718");
-            Statement stmt = con.createStatement();
-            String sql = "insert into login values('"+usr+"','"+gp+"');";
-            stmt.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
-        }  
-        JOptionPane.showMessageDialog(null, "Registration Successful!");
-        Index i = new Index(usr);
-        i.setVisible(true);
-        this.setVisible(false);
+
     }//GEN-LAST:event_Register_LabelMousePressed
 
     private void Password_passwordfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Password_passwordfieldActionPerformed

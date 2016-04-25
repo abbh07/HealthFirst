@@ -98,9 +98,11 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Username_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Username_Label.setForeground(new java.awt.Color(5, 86, 217));
         Username_Label.setText("Username:");
 
         Password_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Password_Label.setForeground(new java.awt.Color(5, 86, 217));
         Password_Label.setText("Password:");
 
         Username_TextField.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +127,7 @@ public class Login extends javax.swing.JFrame {
         });
 
         Register_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
+        Register_Label.setForeground(new java.awt.Color(5, 86, 217));
         Register_Label.setText("Not Registered Yet?");
 
         Img_Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/healthcare-1024x410.png"))); // NOI18N
@@ -225,18 +228,19 @@ public class Login extends javax.swing.JFrame {
         usr =  Username_TextField.getText();
         pass = Password_PasswordField.getText();
         int flag = 0;
-        if(usr == null)
+        if(Username_TextField.getText().isEmpty() == true && Password_PasswordField.getText().isEmpty() == true)
         {
-            flag = 1;
+            flag = 4;
         }
-        else if(pass == null)
+        else if(Username_TextField.getText().isEmpty() == true)
         {
             flag = 2;
         }
-        else if(usr == null && pass == null)
+        else if(Password_PasswordField.getText().isEmpty() == true)
         {
             flag = 3;
         }
+        
             try {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/healthfirst","root","abbh07@6718");
             Statement stmt = con.createStatement();
@@ -259,15 +263,15 @@ public class Login extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Invalid Username/Password");
             }
-            else if(flag == 1)
+            else if(flag == 2)
             {
                 JOptionPane.showMessageDialog(null,"Enter your Username!");
             }
-            else if(flag == 2)
+            else if(flag == 3)
             {
                 JOptionPane.showMessageDialog(null, "Enter your Password!");
             }
-            else if(flag == 3)
+            else if(flag == 4)
             {
                 JOptionPane.showMessageDialog(null, "Enter your Username and Password!");
             }

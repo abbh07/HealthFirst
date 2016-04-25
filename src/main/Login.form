@@ -83,6 +83,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="15" style="1"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d9" green="56" red="5" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Username:"/>
       </Properties>
     </Component>
@@ -90,6 +93,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d9" green="56" red="5" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Password:"/>
       </Properties>
@@ -124,6 +130,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Ubuntu" size="15" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="d9" green="56" red="5" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Not Registered Yet?"/>
       </Properties>
