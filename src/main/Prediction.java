@@ -321,7 +321,17 @@ public class Prediction extends javax.swing.JFrame {
                 rem += rs.getString("Cure");
                 rem += "\n";
             }
-            Result r = new Result(diseaseName[pdIndex],rem);
+            qu = "select Name,Contact from Doctor where Disease = '" + diseaseName[pdIndex] + "';";
+            rs = st.executeQuery(qu);
+            String info = "";
+            while(rs.next())
+            {
+                info = info + rs.getString("Name");
+                info = info + "\n";
+                info = info + rs.getString("Contact");
+                info = info + "\n";
+            }
+            Result r = new Result(diseaseName[pdIndex],rem,info);
             r.setVisible(true);
             this.setVisible(false);
         

@@ -16,8 +16,9 @@ public class Result extends javax.swing.JFrame {
      * Creates new form Result
      * @param predictedDisease
      * @param rem
+     * @param info
      */
-    public Result(String predictedDisease, String rem) {
+    public Result(String predictedDisease, String rem,String info) {
         initComponents();
         Predicted_TextField.setEditable(false);
         Predicted_TextField.setText(predictedDisease);
@@ -25,6 +26,10 @@ public class Result extends javax.swing.JFrame {
         Remedy_TextArea.setLineWrap(true);
         Remedy_TextArea.setWrapStyleWord(true);
         Remedy_TextArea.setText(rem);
+        Doctor_TextArea.setEditable(false);
+        Doctor_TextArea.setLineWrap(true);
+        Doctor_TextArea.setWrapStyleWord(true);
+        Doctor_TextArea.setText(info);
     }
 
     /**
@@ -155,7 +160,7 @@ public class Result extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Result(null,null).setVisible(true);
+                new Result(null,null,null).setVisible(true);
             }
         });
     }
