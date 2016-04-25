@@ -92,7 +92,7 @@ public class Index extends javax.swing.JFrame {
                 Helpline_LabelMousePressed(evt);
             }
         });
-        getContentPane().add(Helpline_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 90, 50));
+        getContentPane().add(Helpline_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 100, 50));
 
         Img_Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/healthcare-1.jpg"))); // NOI18N
         getContentPane().add(Img_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
