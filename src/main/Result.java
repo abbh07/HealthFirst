@@ -11,14 +11,15 @@ package main;
  */
 public class Result extends javax.swing.JFrame {
 
-    
+    String user;
     /**
      * Creates new form Result
      * @param predictedDisease
      * @param rem
      * @param info
+     * @param user
      */
-    public Result(String predictedDisease, String rem,String info) {
+    public Result(String predictedDisease, String rem,String info,String user) {
         initComponents();
         Predicted_TextField.setEditable(false);
         Predicted_TextField.setText(predictedDisease);
@@ -30,6 +31,7 @@ public class Result extends javax.swing.JFrame {
         Doctor_TextArea.setLineWrap(true);
         Doctor_TextArea.setWrapStyleWord(true);
         Doctor_TextArea.setText(info);
+        this.user = user;
     }
 
     /**
@@ -128,7 +130,7 @@ public class Result extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Back_LabelMousePressed
-        Prediction p  = new Prediction();
+        Prediction p  = new Prediction(user);
         p.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Back_LabelMousePressed
@@ -163,7 +165,7 @@ public class Result extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Result(null,null,null).setVisible(true);
+                new Result(null,null,null,null).setVisible(true);
             }
         });
     }

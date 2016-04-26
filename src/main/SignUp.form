@@ -27,20 +27,19 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="Register_Label" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="Username_Label" min="-2" max="-2" attributes="0"/>
-                          <Component id="Username_TextField" min="-2" pref="220" max="-2" attributes="0"/>
-                          <Component id="Password_Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Password_passwordfield" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="Username_Label" min="-2" max="-2" attributes="0"/>
+                  <Component id="Username_TextField" min="-2" pref="220" max="-2" attributes="0"/>
+                  <Component id="Password_Label" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="Password_passwordfield" alignment="0" min="-2" pref="219" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
+              <Component id="Back_Label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Register_Label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,9 +55,12 @@
               <Component id="Password_Label" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="Password_passwordfield" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="Register_Label" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Back_Label" max="32767" attributes="0"/>
+                  <Component id="Register_Label" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -114,6 +116,16 @@
     <Component class="javax.swing.JPasswordField" name="Password_passwordfield">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Password_passwordfieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Back_Label">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/main/back.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Back_LabelMousePressed"/>
       </Events>
     </Component>
   </SubComponents>

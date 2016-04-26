@@ -87,6 +87,7 @@ public class Index extends javax.swing.JFrame {
         Helpline_Label.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         Helpline_Label.setForeground(new java.awt.Color(0, 62, 255));
         Helpline_Label.setText("  HELPLINE");
+        Helpline_Label.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Helpline_Label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 Helpline_LabelMousePressed(evt);
@@ -101,7 +102,7 @@ public class Index extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Predict_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Predict_LabelMousePressed
-        Prediction p = new Prediction();
+        Prediction p = new Prediction(user);
         p.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Predict_LabelMousePressed
@@ -125,7 +126,7 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOut_LabelMousePressed
 
     private void Helpline_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Helpline_LabelMousePressed
-        Emergency e = new Emergency();
+        Emergency e = new Emergency(user);
         e.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Helpline_LabelMousePressed

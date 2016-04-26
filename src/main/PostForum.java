@@ -118,6 +118,10 @@ public class PostForum extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Enter something to post!");
         }
+        else if(disc.length() > 3000)
+        {
+            JOptionPane.showMessageDialog(null, "Character Limit Exceeded!");
+        }
         else
         {
             try {

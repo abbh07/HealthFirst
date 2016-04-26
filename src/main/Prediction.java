@@ -25,11 +25,14 @@ import regression.MultiLinear;
  */
 public class Prediction extends javax.swing.JFrame {
 
+    String user;
     /**
      * Creates new form Prediction
+     * @param user
      */
-    public Prediction() {
+    public Prediction(String user) {
         initComponents();
+        this.user = user;
     }
 
     Connection con = null;
@@ -219,7 +222,7 @@ public class Prediction extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Back_LabelMousePressed
-        Index i = new Index(null);
+        Index i = new Index(user);
         i.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Back_LabelMousePressed
@@ -347,7 +350,7 @@ public class Prediction extends javax.swing.JFrame {
                     info = info + "\n";
                 }
                 JOptionPane.showMessageDialog(null, "Prediction Successful!");
-                Result r = new Result(diseaseName[pdIndex], rem, info);
+                Result r = new Result(diseaseName[pdIndex], rem, info,user);
                 r.setVisible(true);
                 this.setVisible(false);
 
@@ -484,7 +487,7 @@ public class Prediction extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Prediction().setVisible(true);
+                new Prediction(null).setVisible(true);
             }
         });
     }

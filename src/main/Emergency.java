@@ -11,14 +11,17 @@ package main;
  */
 public class Emergency extends javax.swing.JFrame {
 
+    String user;
     /**
      * Creates new form Emergency
+     * @param user
      */
-    public Emergency() {
+    public Emergency(String user) {
         initComponents();
         Contact_TextArea.setLineWrap(true);
         Contact_TextArea.setWrapStyleWord(true);
         Contact_TextArea.setEditable(false);
+        this.user = user;
     }
 
     /**
@@ -77,7 +80,7 @@ public class Emergency extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Back_LabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Back_LabelMousePressed
-        Index i = new Index(null);
+        Index i = new Index(user);
         i.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_Back_LabelMousePressed
@@ -112,7 +115,7 @@ public class Emergency extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Emergency().setVisible(true);
+                new Emergency(null).setVisible(true);
             }
         });
     }
